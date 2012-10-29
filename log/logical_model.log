@@ -1,0 +1,5 @@
+# Logfile created on 2012-10-01 21:22:36 -0300 by logger.rb/25413
+LogicalModel Log: 200 mockedurl in 1234s
+LogicalModel Log RESPONSE: {"collection":[],"total":0}
+LogicalModel Log: 200 mockedurl in 1234s
+LogicalModel Log RESPONSE: {"collection":[],"total":0}

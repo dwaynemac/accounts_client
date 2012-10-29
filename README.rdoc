@@ -1,0 +1,37 @@
+= Overmind Client
+
+== Usage
+
+=== For a Rails app
+
+In Gemfile
+
+    gem 'accounts_client'
+
+And you should define:
+
+    Accounts::HYDRA
+    Accounts::API_KEY
+
+=== For a non-Rails app
+
+In Gemfile
+
+    gem 'accounts_client'
+
+# TODO ...
+
+== Updating gem
+
+=== Build gem locally:
+
+    gem build accounts_client.gemspec
+
+=== Push to rubygems
+
+    gem push accounts_client-X.Y.Z.gem
+
+== TODO
+
+  * specs!
+  * non-Rails app usage example
