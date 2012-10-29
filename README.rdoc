@@ -1,4 +1,4 @@
-= Overmind Client
+= Accounts Client
 
 == Usage
 
