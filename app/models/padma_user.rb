@@ -3,7 +3,14 @@ class PadmaUser < LogicalModel
   self.use_ssl = (Rails.env=="production")
 
   self.resource_path = "/v0/users"
-  self.attribute_keys = [:username, :drc_login, :email, :locale, :accounts, :roles, :verbose_help ] # drc_login is OBSOLETE. remove.
+  self.attribute_keys = [:username,
+                         :drc_login,
+                         :email,
+                         :locale,
+                         :accounts,
+                         :current_account_name,
+                         :roles,
+                         :verbose_help ] # drc_login is OBSOLETE. remove.
   self.use_api_key = true
   self.api_key_name = "token"
   self.api_key = Accounts::API_KEY
