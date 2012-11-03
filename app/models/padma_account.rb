@@ -2,7 +2,7 @@
 # Configuration for LogicalModel on /config/initializers/logical_model.rb
 class PadmaAccount < LogicalModel
   self.hydra = Accounts::HYDRA
-  self.use_ssl = (Rails.env=="production")
+  self.use_ssl = (defined?(Rails)? Rails.env=="production" : ENV['RACK_ENV']=='production')
 
   self.resource_path = "/v0/accounts"
   self.attribute_keys = [:id, :name, :enabled ]

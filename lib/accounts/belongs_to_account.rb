@@ -1,4 +1,4 @@
-# this module assumes base class has aa account_name attribute.
+# this module assumes base class has an account_name attribute.
 module Accounts
   module BelongsToAccount
 

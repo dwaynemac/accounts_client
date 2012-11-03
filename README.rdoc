@@ -21,6 +21,12 @@ In Gemfile
 
 # TODO ...
 
+== TESTING
+
+For running gems specs run
+
+    rake
+
 == Updating gem
 
 === Build gem locally:

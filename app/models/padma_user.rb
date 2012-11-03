@@ -1,6 +1,6 @@
 class PadmaUser < LogicalModel
   self.hydra = Accounts::HYDRA
-  self.use_ssl = (Rails.env=="production")
+  self.use_ssl = (defined?(Rails)? Rails.env=="production" : ENV['RACK_ENV']=='production')
 
   self.resource_path = "/v0/users"
   self.attribute_keys = [:username,
@@ -23,6 +23,18 @@ class PadmaUser < LogicalModel
   def id
     self.username
   end
+
+  # @return [PadmaAccount]
+  def current_account
+    unless cached_current_account
+      if self.current_account_name
+        self.cached_current_account= PadmaAccount.find(self.current_account_name)
+      end
+    end
+    cached_current_account
+  end
+  attr_accessor :cached_current_account
+
 
   # Returns my accounts as Padma::Account objects
   # @return [Array <PadmaAccount>]
