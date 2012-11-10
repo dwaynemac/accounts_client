@@ -1,3 +1,9 @@
+# This module will include BelongsToUser and BelongsToAccount
+# It requires base class to respond to:
+# - username
+# - account_name
+# - account_name=
+# - account_name_changed?
 module Accounts
   module IsAUser
 
@@ -9,6 +15,8 @@ module Accounts
       base.send(:delegate, :verbose_help?, to: :padma_user)
     end
 
+    # @param [Boolean] cache
+    # @return [PadmaUser]
     def padma(cache=true)
       self.user(force_service_call: !cache)
     end
@@ -39,13 +47,13 @@ module Accounts
     # Validates that current_account_name
     # checking that user belongs to such account
     def has_access_to_current_account
-      return if self.current_account.nil? || !self.current_account_id_changed?
+      return if self.padma.try(:current_account).nil?
 
       if self.enabled_accounts.nil?
         # nil means error in connection
         self.errors.add(:current_account_id, I18n.t('user.couldnt_connect_to_check_current_account'))
       else
-        unless self.current_account.name.in?(self.enabled_accounts.map{|ea|ea.name})
+        unless self.padma.current_account_name.in?(self.enabled_accounts.map{|ea|ea.name})
           self.errors.add(:current_account_id, I18n.t('user.invalid_current_account'))
         end
       end

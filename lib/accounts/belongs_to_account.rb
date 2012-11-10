@@ -1,4 +1,8 @@
 # this module assumes base class has an account_name attribute.
+# and thus responds to:
+# - account_name
+# - account_name=
+# - account_name_changed?
 module Accounts
   module BelongsToAccount
 
@@ -34,6 +38,7 @@ module Accounts
     # @raises 'This is the wrong account!'
     # @raises 'This is not a account!'
     def padma_account_setted_correctly
+      # refresh_cached_account_if_needed
       return if self.padma_account.nil?
       unless padma_account.is_a?(PadmaAccount)
         raise 'This is not a account!'
@@ -47,6 +52,13 @@ module Accounts
         end
       end
     end
+
+    def refresh_cached_account_if_needed
+      if self.account_name_changed?
+        self.account(force_service_call: true)
+      end
+    end
+
   end
 end
 

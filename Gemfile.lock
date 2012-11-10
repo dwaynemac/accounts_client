@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    accounts_client (0.0.3)
+    accounts_client (0.0.4)
       logical_model
       railties (~> 3.1)
 
