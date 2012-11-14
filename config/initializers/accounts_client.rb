@@ -10,6 +10,8 @@ if(defined?(Rails))
        "padma-accounts.heroku.com"
       when "development"
        "localhost:3001"
+      when "staging"
+       "padma-accounts-staging.herokuapp.com"
       when "test"
        "localhost:3001"
     end
