@@ -11,6 +11,10 @@ module Accounts
       base.send(:validate, :has_access_to_current_account)
       base.send(:include, Accounts::BelongsToUser)
       base.send(:include, Accounts::BelongsToAccount)
+
+      base.send(:include, Gravtastic)
+      base.send(:gravtastic)
+
       base.send(:delegate, :email, to: :padma_user)
       base.send(:delegate, :verbose_help?, to: :padma_user)
     end

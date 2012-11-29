@@ -1,4 +1,8 @@
 class PadmaUser < LogicalModel
+
+  include Gravtastic
+  gravtastic
+
   self.hydra = Accounts::HYDRA
   self.use_ssl = (defined?(Rails)? Rails.env=="production" : ENV['RACK_ENV']=='production')
 

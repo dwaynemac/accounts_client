@@ -1,3 +1,4 @@
+require 'gravtastic'
 require 'logical_model'
 if defined?(Rails)
   require 'accounts/railties'
