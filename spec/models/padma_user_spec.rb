@@ -37,4 +37,80 @@ describe PadmaUser do
     end
   end
 
+  context "default use_ssl" do
+    before do
+      Rails = mock(env: environment)
+    end
+    context "in production environment" do
+      let(:environment){'production'}
+      it "uses ssl" do
+        PadmaAccount.resource_uri.should match /https/
+      end
+    end
+    context "in staging environment" do
+      let(:environment){'staging'}
+      it "uses ssl" do
+        PadmaAccount.resource_uri.should match /https/
+      end
+    end
+    context "in development environment" do
+      let(:environment){'development'}
+      it "doesnt use ssl" do
+        PadmaAccount.resource_uri.should_not match /https/
+      end
+    end
+  end
+
+  context "setting use_ssl = true" do
+    before do
+      PadmaAccount.use_ssl = true
+      Rails = mock(env: environment)
+    end
+    context "in production environment" do
+      let(:environment){'production'}
+      it "uses ssl" do
+        PadmaAccount.resource_uri.should match /https/
+      end
+    end
+    context "in staging environment" do
+      let(:environment){'staging'}
+      it "uses ssl" do
+        PadmaAccount.resource_uri.should match /https/
+      end
+    end
+    context "in development environment" do
+      let(:environment){'development'}
+      it "uses ssl" do
+        PadmaAccount.resource_uri.should match /https/
+      end
+    end
+  end
+
+  context "setting use_ssl = false" do
+    before do
+      PadmaAccount.use_ssl = false
+      Rails = mock(env: environment)
+    end
+    context "in production environment" do
+      let(:environment){'production'}
+      it "doesnt use ssl" do
+        PadmaAccount.resource_uri.should_not match /https/
+      end
+    end
+    context "in staging environment" do
+      let(:environment){'staging'}
+      it "doesnt use ssl" do
+        PadmaAccount.resource_uri.should_not match /https/
+      end
+      example{ Rails.env == 'staging' }
+    end
+    context "in development environment" do
+      let(:environment){'development'}
+      it "doesnt use ssl" do
+        PadmaAccount.resource_uri.should_not match /https/
+      end
+      example{ Rails.env == 'development' }
+    end
+  end
+
 end
