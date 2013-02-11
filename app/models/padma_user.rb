@@ -14,7 +14,9 @@ class PadmaUser < LogicalModel
                          :accounts,
                          :current_account_name,
                          :roles,
-                         :verbose_help ] # drc_login is OBSOLETE. remove.
+                         :verbose_help,
+                         :fb_uid,
+                         :fb_token] # drc_login is OBSOLETE. remove.
   self.use_api_key = true
   self.api_key_name = "token"
   self.api_key = Accounts::API_KEY
