@@ -4,7 +4,7 @@ class PadmaAccount < LogicalModel
   self.hydra = Accounts::HYDRA
 
   self.resource_path = "/v0/accounts"
-  self.attribute_keys = [:id, :name, :enabled, :timezone]
+  self.attribute_keys = [:id, :name, :enabled, :timezone, :email]
   self.use_api_key = true
   self.api_key_name = "token"
   self.api_key = Accounts::API_KEY
