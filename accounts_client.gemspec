@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = '0.0.14'
 
-  gem.add_dependency "railties", "~> 3.1"
+  gem.add_dependency "railties", ">= 3.1"
   gem.add_dependency 'gravtastic'
   gem.add_dependency 'logical_model', "~> 0.5.0"
 

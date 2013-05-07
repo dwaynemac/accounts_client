@@ -1,3 +1,4 @@
 .idea
 accounts_client*.gem
 log/
+.ruby-version
