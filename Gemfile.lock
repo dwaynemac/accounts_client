@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    accounts_client (0.0.13)
+    accounts_client (0.0.16)
       gravtastic
       logical_model (~> 0.5.0)
-      railties (~> 3.1)
+      railties (>= 3.1)
 
 GEM
   remote: http://rubygems.org/
@@ -41,14 +41,14 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    logical_model (0.5.0)
+    logical_model (0.5.1)
       activemodel
       activesupport
       ethon (= 0.4.2)
       kaminari (~> 0.13.0)
       typhoeus (= 0.5.0.alpha)
     mime-types (1.23)
-    multi_json (1.7.2)
+    multi_json (1.7.3)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
