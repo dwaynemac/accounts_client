@@ -15,7 +15,9 @@ module Accounts
       base.send(:include, Gravtastic)
       base.send(:gravtastic)
 
-      base.send(:delegate, :email, to: :padma_user, allow_nil: true)
+      unless base.new.respond_to?(:email)
+        base.send(:delegate, :email, to: :padma_user, allow_nil: true)
+      end
       base.send(:delegate, :verbose_help?, to: :padma_user, allow_nil: true)
     end
 
