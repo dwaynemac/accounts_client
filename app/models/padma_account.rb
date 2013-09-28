@@ -1,14 +1,20 @@
 # wrapper for PADMA-Accounts Account API interaction
 # Configuration for LogicalModel on /config/initializers/logical_model.rb
 class PadmaAccount < LogicalModel
-  self.hydra = Accounts::HYDRA
+  use_hydra Accounts::HYDRA
+  set_resource_host Accounts::HOST
+  set_resource_path "/v0/accounts"
 
-  self.resource_path = "/v0/accounts"
-  self.attribute_keys = [:id, :name, :enabled, :timezone, :email, :full_name, :nucleo_id]
-  self.use_api_key = true
-  self.api_key_name = "token"
-  self.api_key = Accounts::API_KEY
-  self.host  = Accounts::HOST
+  attribute :id
+  attribute :name
+  attribute :enabled
+  attribute :timezone
+  attribute :email
+  attribute :full_name
+  attribute :nucleo_id
+  attribute :migrated_to_padma_on
+
+  set_api_key 'token', Accounts::API_KEY
 
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999

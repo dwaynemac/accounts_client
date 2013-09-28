@@ -3,32 +3,30 @@ class PadmaUser < LogicalModel
   include Gravtastic
   gravtastic
 
-  self.hydra = Accounts::HYDRA
-  self.use_ssl = (defined?(Rails)? Rails.env=="production" : ENV['RACK_ENV']=='production')
+  use_hydra Accounts::HYDRA
 
-  self.resource_path = "/v0/users"
-  self.attribute_keys = [:username,
-                         :drc_login,
-                         :email,
-                         :locale,
-                         :accounts,
-                         :current_account_name,
-                         :roles,
-                         :verbose_help,
-                         :fb_uid,
-                         :fb_token] # drc_login is OBSOLETE. remove.
-  self.use_api_key = true
-  self.api_key_name = "token"
-  self.api_key = Accounts::API_KEY
-  self.host  = Accounts::HOST
+  set_resource_path "/v0/users"
+  set_resource_host Accounts::HOST
+
+  set_api_key 'token', Accounts::API_KEY
+
+  attribute :username
+  attribute :drc_login
+  attribute :email
+  attribute :locale
+  attribute :accounts
+  attribute :current_account_name
+  attribute :roles
+  attribute :verbose_help
+  attribute :fb_uid
+  attribute :fb_token
+
+  # LogicalModel expects an id to create resource_uri
+  alias_attribute :id, :username
 
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999
 
-  # LogicalModel expects an id to create resource_uri
-  def id
-    self.username
-  end
 
   # @return [PadmaAccount]
   def current_account

@@ -11,10 +11,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "accounts_client"
   gem.require_paths = ["lib"]
-  gem.version       = '0.0.19'
+  gem.version       = '0.0.20'
 
   gem.add_dependency "railties", ">= 3.1"
   gem.add_dependency 'gravtastic'
-  gem.add_dependency 'logical_model', "~> 0.5.0"
+  gem.add_dependency 'logical_model', "~> 0.5.8"
 
 end
