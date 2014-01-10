@@ -18,11 +18,15 @@ class PadmaAccount < LogicalModel
   end
 
   def users
-    PadmaUser.paginate :params => { :account_name => self.name }
+    PadmaUser.paginate(:account_name => self.name)
+  end
+
+  def admin
+    self.users.select {|u| u.roles.select {|r| r["name"] == "admin"}.first}.first
   end
 
   def contacts
-    PadmaContact.paginate :params => { :account_name => self.name }
+    PadmaContact.paginate(:account_name => self.name)
   end
 
 end
