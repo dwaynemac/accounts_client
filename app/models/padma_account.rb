@@ -9,6 +9,7 @@ class PadmaAccount < LogicalModel
   attribute :name
   attribute :enabled
   attribute :timezone
+  attribute :locale
   attribute :email
   attribute :full_name
   attribute :nucleo_id
