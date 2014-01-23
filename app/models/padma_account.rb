@@ -24,6 +24,13 @@ class PadmaAccount < LogicalModel
     self.enabled
   end
 
+  # if true account is padma2
+  # if false account is kshema
+  # @return [Boolean]
+  def migrated?
+    !self.migrated_to_padma_on.nil?
+  end
+
   def users
     PadmaUser.paginate(:account_name => self.name)
   end
