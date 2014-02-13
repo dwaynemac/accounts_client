@@ -5,7 +5,6 @@ class PadmaAccount < LogicalModel
   set_resource_host Accounts::HOST
   set_resource_path "/v0/accounts"
 
-  attribute :id
   attribute :name
   attribute :enabled
   attribute :timezone
@@ -43,10 +42,14 @@ class PadmaAccount < LogicalModel
     PadmaContact.paginate(:account_name => self.name)
   end
 
-  # Attributes will be sent to server under this key.
-  # json_root => { ... attributes }
   def json_root
     :account
   end
 
+  private
+
+  # Accounts-ws uses account name of identification
+  def id
+    name
+  end
 end
