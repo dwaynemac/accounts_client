@@ -56,4 +56,10 @@ class PadmaUser < LogicalModel
   def verbose_help?
     !!self.verbose_help
   end
+
+  # Attributes will be sent to server under this key.
+  # json_root => { ... attributes }
+  def json_root
+    :user
+  end
 end

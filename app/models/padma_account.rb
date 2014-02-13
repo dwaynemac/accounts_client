@@ -43,4 +43,10 @@ class PadmaAccount < LogicalModel
     PadmaContact.paginate(:account_name => self.name)
   end
 
+  # Attributes will be sent to server under this key.
+  # json_root => { ... attributes }
+  def json_root
+    :account
+  end
+
 end
