@@ -13,6 +13,7 @@ class PadmaAccount < LogicalModel
   attribute :full_name
   attribute :nucleo_id
   attribute :migrated_to_padma_on
+  attribute :federation_nucleo_id
 
   set_api_key 'token', Accounts::API_KEY
 
