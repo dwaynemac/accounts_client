@@ -10,6 +10,8 @@ class PadmaUser < LogicalModel
 
   set_api_key 'token', Accounts::API_KEY
 
+  self.expires_in = 1.hour
+
   attribute :username
   attribute :drc_login
   attribute :email

@@ -15,6 +15,8 @@ class PadmaAccount < LogicalModel
   attribute :migrated_to_padma_on
   attribute :federation_nucleo_id
 
+  self.expires_in = 1.hour
+
   set_api_key 'token', Accounts::API_KEY
 
   TIMEOUT = 5500 # milisecons
