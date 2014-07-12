@@ -7,7 +7,7 @@ if(defined?(Rails))
 
     HOST = case Rails.env
       when "production"
-       "padma-accounts.herokuapp.com"
+       "padma-accounts-staging.herokuapp.com"
       when "development"
        "localhost:3001"
       when "staging"
