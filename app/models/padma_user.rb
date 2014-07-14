@@ -22,6 +22,7 @@ class PadmaUser < LogicalModel
   attribute :verbose_help
   attribute :fb_uid
   attribute :fb_token
+  attribute :first_login
 
   # LogicalModel expects an id to create resource_uri
   alias_attribute :id, :username
