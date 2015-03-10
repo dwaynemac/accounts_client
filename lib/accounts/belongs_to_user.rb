@@ -19,15 +19,20 @@ module Accounts
     # @option options [TrueClass] force_service_call - forces call to users-ws
     # @return [PadmaUser / PadmaUserDecorator]
     def user(options={})
-      if self.padma_user.nil? || options[:force_service_call]
-        self.padma_user = PadmaUser.find(username)
+      padma_user ||= Rails.cache.read([username,"padma_user"])
+
+      if padma_user.nil? || options[:force_service_call]
+        padma_user = PadmaUser.find(username)
+        if padma_user
+          Rails.cache.write([self,"padma"], padma_user, :expires_in => 5.minutes)
+        end
       end
-      # TODO cache
-      ret = padma_user
+
       if options[:decorated] && padma_user
-        ret = PadmaUserDecorator.decorate(padma_user)
+        PadmaUserDecorator.decorate(padma_user)
+      else
+        padma_user
       end
-      ret
     end
 
     private
