@@ -14,6 +14,8 @@ class PadmaUser < LogicalModel
   attribute :drc_login
   attribute :email
   attribute :locale
+  attribute :encoding
+  attribute :separator
   attribute :accounts
   attribute :current_account_name
   attribute :roles
