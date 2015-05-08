@@ -53,6 +53,25 @@ module Accounts
       self.padma.try(:enabled_accounts)
     end
 
+    # Returns CSV options associated with this user from PADMA ACCOUNTS
+    #
+    # @return [Hash] 
+    def csv_options
+      options = CSV_DEFAULTS.clone
+      options[:col_sep] = self.padma.try :separator
+      options[:encoding] = self.padma.try :encoding
+
+      return options
+    end
+
+    def encoding
+      @encoding ||= self.padma.encoding 
+    end
+
+    def separator
+      @separator ||= self.padma.separator
+    end
+
     private
 
     # Validates that current_account_name
