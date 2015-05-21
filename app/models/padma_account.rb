@@ -14,6 +14,8 @@ class PadmaAccount < LogicalModel
   attribute :nucleo_id
   attribute :migrated_to_padma_on
   attribute :federation_nucleo_id
+  attribute :tester_level
+  attribute :subscription_name
 
   set_api_key 'token', Accounts::API_KEY
 
