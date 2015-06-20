@@ -31,6 +31,10 @@ module Accounts
       ret
     end
 
+    def account_tester_level
+      account.tester_level
+    end
+
     private
 
     # If padma_account is setted with a PadmaAccount that doesn't match
