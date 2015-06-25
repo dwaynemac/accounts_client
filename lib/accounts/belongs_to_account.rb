@@ -32,7 +32,7 @@ module Accounts
     end
 
     def account_tester_level
-      account.tester_level
+      account.try :tester_level
     end
 
     private
