@@ -17,6 +17,8 @@ class PadmaAccount < LogicalModel
   attribute :tester_level
   attribute :subscription_name
 
+  self.expires_in = 1.hour
+
   set_api_key 'token', Accounts::API_KEY
 
   TIMEOUT = 5500 # milisecons

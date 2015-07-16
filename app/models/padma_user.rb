@@ -10,6 +10,8 @@ class PadmaUser < LogicalModel
 
   set_api_key 'token', Accounts::API_KEY
 
+  self.expires_in = 1.hour
+
   attribute :username
   attribute :drc_login
   attribute :email
@@ -22,6 +24,7 @@ class PadmaUser < LogicalModel
   attribute :verbose_help
   attribute :fb_uid
   attribute :fb_token
+  attribute :first_login
 
   # LogicalModel expects an id to create resource_uri
   alias_attribute :id, :username
