@@ -45,7 +45,7 @@ class PadmaUser < LogicalModel
   # Returns my accounts as Padma::Account objects
   # @return [Array <PadmaAccount>]
   def padma_accounts
-    return nil if self.account.nil?
+    return nil if self.accounts.nil?
     self.accounts.map{|a|PadmaAccount.new(a)}
   end
 
