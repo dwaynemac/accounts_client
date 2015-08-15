@@ -16,6 +16,7 @@ class PadmaUser < LogicalModel
   attribute :locale
   attribute :encoding
   attribute :separator
+  attribute :date_format
   attribute :accounts
   attribute :current_account_name
   attribute :roles
