@@ -17,6 +17,7 @@ class PadmaAccount < LogicalModel
   attribute :tester_level
   attribute :subscription_name
   attribute :coordenates
+  attribute :enabled_petals
 
   set_api_key 'token', Accounts::API_KEY
 
