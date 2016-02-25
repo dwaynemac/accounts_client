@@ -71,6 +71,31 @@ class PadmaAccount < LogicalModel
     res
   end
 
+  def access_for_key(key)
+    res = nil
+    # params = { token: Accounts::API_KEY }
+    params = self.class.merge_key({})
+    request = Typhoeus::Request.new("#{self.class.resource_uri}/#{self.name}/api_keys/#{key}", params: params )
+
+    request.on_complete do |response|
+      if response.code == 200
+        self.class.log_ok(response)
+        res = ActiveSupport::JSON.decode(response.body)['access']
+      elsif response.code == 404
+        self.class.log_ok(response)
+        res = nil
+      else
+        self.class.log_failed(response)
+        res = nil
+      end
+    end
+
+    self.class.hydra.queue(request)
+    self.class.hydra.run
+
+    res
+  end
+
   private
 
   # Accounts-ws uses account name of identification
