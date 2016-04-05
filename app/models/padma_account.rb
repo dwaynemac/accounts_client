@@ -16,6 +16,8 @@ class PadmaAccount < LogicalModel
   attribute :federation_nucleo_id
   attribute :tester_level
   attribute :subscription_name
+  attribute :city
+  attribute :country
   attribute :coordenates
   attribute :enabled_petals
 
