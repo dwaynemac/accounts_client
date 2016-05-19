@@ -7,6 +7,8 @@ class PetalSubscription < LogicalModel
   attribute :id
   attribute :account_name
   attribute :petal_name
+  attribute :cents
+  attribute :currency
 
   set_api_key 'token', Accounts::API_KEY
 
