@@ -4,8 +4,9 @@ class Petal < LogicalModel
   set_resource_path "/v0/petals"
 
   attribute :name
-  attribute :cents_in_k
   attribute :tester_level
+  attribute :cents
+  attribute :currency
 
   set_api_key 'token', Accounts::API_KEY
 
