@@ -10,6 +10,7 @@ class PadmaUser < LogicalModel
 
   set_api_key 'token', Accounts::API_KEY
 
+  attribute :full_name
   attribute :username
   attribute :drc_login
   attribute :email
