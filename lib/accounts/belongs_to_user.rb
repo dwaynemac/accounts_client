@@ -24,7 +24,7 @@ module Accounts
       if padma_user.nil? || options[:force_service_call]
         padma_user = PadmaUser.find(username)
         if padma_user
-          Rails.cache.write([self,"padma"], padma_user, :expires_in => 5.minutes)
+          Rails.cache.write([username,"padma_user"], padma_user, :expires_in => 5.minutes)
         end
       end
 
