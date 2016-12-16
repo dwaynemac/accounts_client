@@ -36,7 +36,7 @@ class PadmaUser < LogicalModel
   def current_account
     unless cached_current_account
       if self.current_account_name
-        self.cached_current_account= PadmaAccount.find(self.current_account_name)
+        self.cached_current_account= PadmaAccount.find_with_rails_cache(self.current_account_name)
       end
     end
     cached_current_account

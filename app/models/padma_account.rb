@@ -72,6 +72,17 @@ class PadmaAccount < LogicalModel
 
     res
   end
+  
+  def self.find_with_rails_cache(account_name)
+    pa = Rails.cache.read([account_name,"padma_account"])
+    if pa.nil?
+      pa = PadmaAccount.find(account_name)
+      if pa
+        Rails.cache.write([account_name,"padma_account"], pa, :expires_in => 5.minutes)  
+      end
+    end
+    pa
+  end
 
   private
 
