@@ -76,7 +76,7 @@ class PadmaAccount < LogicalModel
   def self.find_with_rails_cache(account_name,options={})
     pa = Rails.cache.read([account_name,"padma_account"])
     if pa.nil? || options[:refresh]
-      pa = PadmaAccount.find(account_name)
+      pa = find(account_name)
       if pa
         Rails.cache.write([account_name,"padma_account"], pa, :expires_in => (options[:expires_in] || 5.minutes))  
       end
