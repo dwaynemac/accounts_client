@@ -31,6 +31,16 @@ class PadmaUser < LogicalModel
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999
 
+  def self.find_with_rails_cache(username,options = {})
+    pu = Rails.cache.read([username,"padma_user"])
+    if pu.nil? || options[:refresh]
+      pu = PadmaAccount.find(username)
+      if pu
+        Rails.cache.write([username,"padma_user"], pa, :expires_in => (options[:expires_in] || 5.minutes))  
+      end
+    end
+    pu
+  end
 
   # @return [PadmaAccount]
   def current_account
