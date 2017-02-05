@@ -36,7 +36,7 @@ class PadmaUser < LogicalModel
     if pu.nil? || options[:refresh]
       pu = find(username)
       if pu
-        Rails.cache.write([username,"padma_user"], pa, :expires_in => (options[:expires_in] || 5.minutes))  
+        Rails.cache.write([username,"padma_user"], pu, :expires_in => (options[:expires_in] || 5.minutes))  
       end
     end
     pu
