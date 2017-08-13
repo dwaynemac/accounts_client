@@ -6,6 +6,7 @@ class PadmaAccount < LogicalModel
   set_resource_path "/v0/accounts"
 
   attribute :name
+  attribute :vanity_name
   attribute :enabled
   attribute :timezone
   attribute :locale
@@ -57,6 +58,26 @@ class PadmaAccount < LogicalModel
     res = nil
     params = self.merge_key(params)
     request = Typhoeus::Request.new("#{resource_uri}/by_nucleo_id/#{nucleo_id}", params: params )
+
+    request.on_complete do |response|
+      if response.code >= 200 && response.code < 400
+        log_ok(response)
+        res = self.new.from_json(response.body)
+      else
+        log_failed(response)
+      end
+    end
+
+    self.hydra.queue(request)
+    self.hydra.run
+
+    res
+  end
+  
+  def self.find_by_vanity_name(vanity_name, params={})
+    res = nil
+    params = self.merge_key(params)
+    request = Typhoeus::Request.new("#{resource_uri}/by_vanity_name/#{vanity_name}", params: params )
 
     request.on_complete do |response|
       if response.code >= 200 && response.code < 400
