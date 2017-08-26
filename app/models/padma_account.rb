@@ -26,6 +26,10 @@ class PadmaAccount < LogicalModel
 
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999
+  
+  def branded_name
+    "DeROSE Method | #{full_name}"
+  end
 
   def enabled?
     self.enabled
