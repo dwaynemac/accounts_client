@@ -12,6 +12,7 @@ class PadmaAccount < LogicalModel
   attribute :locale
   attribute :email
   attribute :full_name
+  attribute :branded_name
   attribute :nucleo_id
   attribute :migrated_to_padma_on
   attribute :federation_nucleo_id
@@ -27,10 +28,6 @@ class PadmaAccount < LogicalModel
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999
   
-  def branded_name
-    "DeROSE Method | #{full_name}"
-  end
-
   def enabled?
     self.enabled
   end
