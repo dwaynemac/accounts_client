@@ -56,12 +56,12 @@ module Accounts
     # Returns CSV options associated with this user from PADMA ACCOUNTS
     #
     # @return [Hash] 
-    def csv_options
+    def csv_options(override_options={})
       options = CSV_DEFAULTS.clone
       options[:col_sep] = self.padma.try :separator
       options[:encoding] = self.padma.try :encoding
 
-      return options
+      return options.merge(override_options.to_hash.symbolize_keys!)
     end
 
     def encoding
