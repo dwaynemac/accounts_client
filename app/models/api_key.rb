@@ -3,6 +3,7 @@ class ApiKey < LogicalModel
   set_resource_host Accounts::HOST
   set_resource_path "/v0/api_keys"
 
+  attribute :username
   attribute :account_name
   attribute :access
 
