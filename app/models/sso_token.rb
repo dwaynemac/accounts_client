@@ -1,12 +1,10 @@
-class ApiKey < LogicalModel
+class SsoToken < LogicalModel
   use_hydra Accounts::HYDRA
   set_resource_host Accounts::HOST
-  set_resource_path "/v0/api_keys"
+  set_resource_path "/v0/sso_tokens"
 
   attribute :username
   attribute :account_name
-  attribute :access
-  attribute :key
 
   set_api_key 'token', Accounts::API_KEY
 
@@ -14,6 +12,6 @@ class ApiKey < LogicalModel
   PER_PAGE = 9999
 
   def json_root
-    'api_key'
+    'sso_token'
   end
 end
