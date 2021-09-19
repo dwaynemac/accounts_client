@@ -15,6 +15,6 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "railties", ">= 3.1"
   gem.add_dependency 'gravtastic'
-  gem.add_dependency 'logical_model', ">= 0.6.3"
+  gem.add_dependency 'logical_model', ">= 0.7.1"
 
 end
