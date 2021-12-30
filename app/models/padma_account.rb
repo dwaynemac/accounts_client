@@ -22,6 +22,7 @@ class PadmaAccount < LogicalModel
   attribute :country
   attribute :coordenates
   attribute :enabled_petals
+  attribute :currency
 
   set_api_key 'token', Accounts::API_KEY
 
