@@ -31,6 +31,16 @@ class PadmaUser < LogicalModel
   TIMEOUT = 5500 # milisecons
   PER_PAGE = 9999
 
+  IGNORED_USERNAMES = %W(system gympass)
+
+  def self.find(id, params = {})
+    if id.in?(IGNORED_USERNAMES)
+      nil
+    else
+      super(id, params)
+    end
+  end
+
   def self.find_with_rails_cache(username,options = {})
     pu = Rails.cache.read([username,"padma_user"])
     if pu.nil? || options[:refresh]
