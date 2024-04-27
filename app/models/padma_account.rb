@@ -24,6 +24,7 @@ class PadmaAccount < LogicalModel
   attribute :enabled_petals
   attribute :currency
   attribute :local_mailing
+  attribute :attendance_enabled
 
   set_api_key 'token', Accounts::API_KEY
 
