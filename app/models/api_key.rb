@@ -6,7 +6,7 @@ class ApiKey < LogicalModel
   attribute :username
   attribute :account_name
   attribute :access
-  attribute :key
+  sensitive_attribute :key
 
   set_api_key 'token', Accounts::API_KEY
 
